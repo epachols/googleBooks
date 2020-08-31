@@ -1,2 +1,2 @@
 # googleBooks
-all-in-one repo for a google books MERN stack application.
+all-in-one repo for google books app.
