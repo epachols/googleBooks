@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css"
+import "./App.less"
 
 //TODO:***TEST****
 import { Button } from 'antd';
