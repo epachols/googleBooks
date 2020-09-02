@@ -1,20 +1,32 @@
 import React from "react";
-import "./App.less"
-import Header from "./components/header/header.component"
+import "./App.less";
+
+import Header from "./components/header/header.component";
+import Jumbo from "./components/jumbo/jumbo.component";
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 
 //TODO:***TEST****
-import { Button } from 'antd';
+import { Button } from "antd";
 //TODO:***TEST****
 
 function App() {
   return (
     <div className="App">
-    <Header />
-        <h1>Catalog - for all your kitty book needs</h1>
-        <Button type="primary">Comin' At Ya</Button>
+      <Header />
+      <Jumbo />
+      <Router>
+      <Button type="primary">all route content here</Button>
+
+      </Router>
     </div>
   );
 }
-
 
 export default App;
