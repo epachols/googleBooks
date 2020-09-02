@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import SearchBar from "../components/searchbar/searchbar.component";
+import SearchResults from "../components/searchResults/searchresults.component";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 
 export default function Search(props) {
   const [searchInput, setSearchInput] = useState("");
 
-  const [searchResult, setSearchResult] = useState({});
+  const [searchResults, setSearchResults] = useState({});
 
   const handleInputChange = (event) => {
     const value = event.target.value;
@@ -14,12 +15,10 @@ export default function Search(props) {
   };
 
   const handleSearchSubmit = () => {
-    // TODO: actually firing the search, then setting state to results array. also refine or limit search somehow via google's bringback.
     const query = searchInput.split(" ").join("_");
     API.search(query)
 
       .then((res) => {
-        // console.log(res.data.items[0].volumeInfo.title);
         const results = res.data.items.map((item) => {
           const title = item.volumeInfo.title;
           const subtitle = item.volumeInfo.subtitle;
@@ -37,15 +36,11 @@ export default function Search(props) {
             image,
             link,
             categories,
-            pageCount
-
+            pageCount,
           };
         });
-        console.log(results);
-        // setSearchResult(results);
+        setSearchResults([results]);
       })
-      //TODO: turn this return into a map of the values brought back, limiting returned data to reqeusted information
-
       .catch((err) => console.log(err));
     setSearchInput("");
   };
@@ -57,7 +52,7 @@ export default function Search(props) {
         handleInputChange={handleInputChange}
         handleSearchSubmit={handleSearchSubmit}
       />
-      <div>results box</div>
+      <SearchResults results={searchResults} />
     </div>
   );
 }
