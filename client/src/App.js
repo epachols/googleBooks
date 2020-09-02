@@ -7,10 +7,6 @@ import Jumbo from "./components/jumbo/jumbo.component";
 
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
-//TODO:***TEST****
-import { Button } from "antd";
-//TODO:***TEST****
-
 function App() {
 
   return (
@@ -27,7 +23,7 @@ function App() {
             <Saved />
           </Route>
         </Switch>
-        <Button type="primary">all route content here</Button>
+
     </Router>
       </div>
   );
