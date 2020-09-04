@@ -2,9 +2,14 @@ import React from "react";
 import "./bookcard.css";
 import { Row, Col, Divider, Button } from "antd";
 import BookCart from "../images/librarian.png";
-
+import API from "../../utils/API"
 
 export default function BookCard(props) {
+
+  const saveBook = (bookData) => {
+    API.saveBook(props.data)
+  }
+
   return (
     <div className="bookCard">
       <Row>
@@ -14,16 +19,16 @@ export default function BookCard(props) {
         </Col>
         <Col span={6} style={{textAlign: "right"}}>
           <Button>view</Button>
-          <Button>save</Button>
+          <Button onClick={saveBook}>save</Button>
         </Col>
           <span className="Authors">{props.data.authors}</span>
       </Row>
       <Divider></Divider>
-      <Row gutters={8,8}>
+      <Row gutter={16,16}>
         <Col span={4}>
 
         {/* WORKING ::TODO::: pick out the library cart for OR after it is appropriately sized */}
-        <img alt="thumbnail picture" style={{width: "100%"}} src={props.data.image.thumbnail} />
+        <img alt="thumbnail picture" style={{width: "100%"}} src={props.data.image.smallThumbnail} />
 
 
         </Col>
