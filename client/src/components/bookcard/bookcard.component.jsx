@@ -1,13 +1,20 @@
 import React from "react";
 import "./bookcard.css";
-import { Row, Col, Divider, Button } from "antd";
+import { Row, Col, Divider, Button, message } from "antd";
 import BookCart from "../images/librarian.png";
 import API from "../../utils/API"
 
 export default function BookCard(props) {
 
-  const saveBook = (bookData) => {
-    API.saveBook(props.data)
+  const saveBook = (data) => {
+    // console.log(data)
+    // console.log(JSON.stringify(data))
+    API.saveBook(JSON.stringify(data))
+    .then(()=>{
+      // message.info('added this book to "saved"')
+      console.log('success')
+    })
+    .catch((err) => console.log(err));
   }
 
   return (
@@ -19,7 +26,7 @@ export default function BookCard(props) {
         </Col>
         <Col span={6} style={{textAlign: "right"}}>
           <Button>view</Button>
-          <Button onClick={saveBook}>save</Button>
+          <Button onClick={()=> saveBook(props.data)}>save</Button>
         </Col>
           <span className="Authors">{props.data.authors}</span>
       </Row>
