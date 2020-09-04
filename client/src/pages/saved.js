@@ -3,6 +3,7 @@ import SavedBooks from '../components/savedbooks/savedbooks.component'
 import API from '../utils/API'
 
 export default function Saved() {
+
     const [savedBooks, setSavedBooks] = useState({});
 
     const getSavedBooks = () => {
@@ -19,8 +20,7 @@ export default function Saved() {
 
     return (
         <div>
-            <h1>this is the saved page</h1>
-            <SavedBooks savedBooks={savedBooks}/>
+            <SavedBooks getSavedBooks={getSavedBooks} savedBooks={savedBooks}/>
         </div>
     )
 }

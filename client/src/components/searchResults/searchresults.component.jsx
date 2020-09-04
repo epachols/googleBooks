@@ -10,7 +10,7 @@ export default function SearchResults(props) {
       <h3 style={{ textAlign: "left", marginLeft: "2rem" }}>Search results</h3>
       {props.results && props.results[0] ? (
         props.results[0].map((item) => {
-          if (item.authors && item.description && item.subtitle && item.image.thumbnail) {
+          if (item.authors && item.description && item.subtitle) {
             return <BookCard save={true} data={item} />;
           }
         })

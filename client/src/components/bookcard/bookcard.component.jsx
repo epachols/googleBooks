@@ -25,6 +25,16 @@ export default function BookCard(props) {
     .catch((err) => console.log(err));
   };
 
+  const deleteBook = () => {
+    const _id = props.data._id;
+    API.deleteBook(_id)
+    .then(()=> {
+      message.info('deleted this book from your list')
+      props.getBooks()
+    })
+    .catch((err) => console.log(err))
+  }
+
   return (
     <div className="bookCard">
       <Row>
@@ -32,33 +42,34 @@ export default function BookCard(props) {
           <h2>{props.data.title}</h2>
           <h5>{props.data.subtitle}</h5>
         </Col>
-        <Col span={6} style={{ textAlign: "right" }}>
-          {/* TODO: MODIFY CONDITIONAL BUTTONS TO ACCEPT SAVE/DELETE */}
-          {/* TODO: modify "view" button to bring up an info modal with full details. */}
 
+
+
+
+        <Col span={6} style={{ textAlign: "right" }}>
           <Button>view</Button>
 
-
-          {props.save && props.save === true? (
+          {props.save && props.save === true ? (
             <Button onClick={() => saveBook()}>save</Button>
           ) : (
-            <Button 
-            // TODO: create delete function, have it take ID. onClick={()=>deleteBook()}
-            >delete</Button>
-          ) }
+            <Button onClick={() => deleteBook()}>delete</Button>
+          )}
 
 
         </Col>
+
+
+
         <span className="Authors">{props.data.authors}</span>
       </Row>
       <Divider></Divider>
       <Row gutter={(16, 16)}>
         <Col span={4}>
-          {props.data.image && props.data.image.thumbnail ? (
+          {props.data.image? (
             <img
               alt="thumbnail picture"
               style={{ width: "100%" }}
-              src={props.data.image.thumbnail}
+              src={props.data.image.thumbnail || props.data.image}
             />
           ) : (
             <></>
