@@ -11,7 +11,7 @@ export default function SearchResults(props) {
       {props.results && props.results[0] ? (
         props.results[0].map((item) => {
           if (item.authors && item.description && item.subtitle && item.image.thumbnail) {
-            return <BookCard data={item} />;
+            return <BookCard save={true} data={item} />;
           }
         })
       ) : (

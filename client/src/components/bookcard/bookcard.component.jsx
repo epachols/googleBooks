@@ -33,15 +33,27 @@ export default function BookCard(props) {
           <h5>{props.data.subtitle}</h5>
         </Col>
         <Col span={6} style={{ textAlign: "right" }}>
+          {/* TODO: MODIFY CONDITIONAL BUTTONS TO ACCEPT SAVE/DELETE */}
+          {/* TODO: modify "view" button to bring up an info modal with full details. */}
+
           <Button>view</Button>
-          <Button onClick={() => saveBook()}>save</Button>
+
+
+          {props.save && props.save === true? (
+            <Button onClick={() => saveBook()}>save</Button>
+          ) : (
+            <Button 
+            // TODO: create delete function, have it take ID. onClick={()=>deleteBook()}
+            >delete</Button>
+          ) }
+
+
         </Col>
         <span className="Authors">{props.data.authors}</span>
       </Row>
       <Divider></Divider>
       <Row gutter={(16, 16)}>
         <Col span={4}>
-          {/* WORKING ::TODO::: pick out the library cart for OR after it is appropriately sized */}
           {props.data.image && props.data.image.thumbnail ? (
             <img
               alt="thumbnail picture"

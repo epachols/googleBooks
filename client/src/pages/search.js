@@ -24,10 +24,11 @@ export default function Search(props) {
           const subtitle = item.volumeInfo.subtitle;
           const authors = item.volumeInfo.authors;
           const description = item.volumeInfo.description;
+
           const image = item.volumeInfo.imageLinks;
           const link = item.volumeInfo.infoLink;
-          const categories = item.volumeInfo.categories;
-          const pageCount = item.volumeInfo.pageCount;
+          // const categories = item.volumeInfo.categories;
+          // const pageCount = item.volumeInfo.pageCount;
           return {
             title,
             subtitle,
@@ -35,8 +36,8 @@ export default function Search(props) {
             description,
             image,
             link,
-            categories,
-            pageCount,
+            // categories,
+            // pageCount,
           };
         });
         setSearchResults([results]);
