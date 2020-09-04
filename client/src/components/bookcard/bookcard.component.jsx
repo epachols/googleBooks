@@ -17,7 +17,7 @@ export default function BookCard(props) {
     };
     console.log(bookData);
 
-    API.saveBook(bookData)
+    API.saveBook(JSON.stringify(bookData))
       .then(() => {
         message.info('added this book to "saved"');
         console.log("success");
