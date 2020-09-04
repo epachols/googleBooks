@@ -5,3 +5,8 @@
     border-bottom: 2px solid black;
     margin: 2px auto;
 }
+
+.Authors {
+    color: rgb(65, 0, 65);
+    font-size: .8rem;
+}
