@@ -15,25 +15,25 @@ export default function BookCard(props) {
       link: props.data.link,
       pageCount: props.data.pageCount,
     };
-    console.log(bookData)
+    console.log(bookData);
 
     API.saveBook(bookData)
-    .then(()=>{
-      message.info('added this book to "saved"')
-      console.log('success')
-    })
-    .catch((err) => console.log(err));
+      .then(() => {
+        message.info('added this book to "saved"');
+        console.log("success");
+      })
+      .catch((err) => console.log(err));
   };
 
   const deleteBook = () => {
     const _id = props.data._id;
     API.deleteBook(_id)
-    .then(()=> {
-      message.info('deleted this book from your list')
-      props.getBooks()
-    })
-    .catch((err) => console.log(err))
-  }
+      .then(() => {
+        message.info("deleted this book from your list");
+        props.getBooks();
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div className="bookCard">
@@ -43,29 +43,23 @@ export default function BookCard(props) {
           <h5>{props.data.subtitle}</h5>
         </Col>
 
-
-
-
         <Col span={6} style={{ textAlign: "right" }}>
-          <Button>view</Button>
+
+          <Button><a href={props.data.link} target="_blank">view</a></Button>
 
           {props.save && props.save === true ? (
             <Button onClick={() => saveBook()}>save</Button>
           ) : (
             <Button onClick={() => deleteBook()}>delete</Button>
           )}
-
-
         </Col>
-
-
 
         <span className="Authors">{props.data.authors}</span>
       </Row>
       <Divider></Divider>
       <Row gutter={(16, 16)}>
         <Col span={4}>
-          {props.data.image? (
+          {props.data.image ? (
             <img
               alt="thumbnail picture"
               style={{ width: "100%" }}
